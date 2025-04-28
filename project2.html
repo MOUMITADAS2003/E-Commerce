@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple E-Commerce Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #products {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .product {
+            border: 1px solid #ddd;
+            padding: 20px;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            margin: 5px 0;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Our Store!</h1>
+    <div id="products"></div>
+
+    <script>
+        // Simulated product data
+        const products = [
+            { id: 1, name: "Laptop", price: 75000, description: "High-performance laptop." },
+            { id: 2, name: "Smartphone", price: 35000, description: "Latest smartphone with AI camera." },
+            { id: 3, name: "Headphones", price: 3000, description: "Noise-cancelling headphones." },
+            { id: 4, name: "Smart Watch", price: 7000, description: "Fitness tracking smartwatch." },
+            { id: 5, name: "Camera", price: 45000, description: "DSLR camera with 24MP sensor." }
+        ];
+
+        // Function to display products
+        function displayProducts() {
+            const productsContainer = document.getElementById('products');
+
+            products.forEach(product => {
+                const div = document.createElement('div');
+                div.className = 'product';
+                div.innerHTML = `
+                    <h2>${product.name}</h2>
+                    <p>${product.description}</p>
+                    <p><strong>Price: ₹${product.price}</strong></p>
+                    <button onclick="addToCart('${product.name}')">Add to Cart</button>
+                `;
+                productsContainer.appendChild(div);
+            });
+        }
+
+        function addToCart(productName) {
+            alert(`${productName} added to cart!`);
+        }
+
+        // Call function to display products
+        displayProducts();
+    </script>
+
+</body>
+</html>
